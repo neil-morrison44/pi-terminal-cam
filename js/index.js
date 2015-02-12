@@ -24,23 +24,21 @@ camera.on("start", function(){
 camera.on("read", function(err, timestamp, filename){
     camera.stop();
     console.log("read", arguments);
-    // var pngFile = filename.replace("jpg","png");
-    // gm(filename)
-    // .noProfile()
-    // .write(pngFile, function (err) {
-    //   if (!err){
-    //     console.log("changed to png");
+    gm("./images/image.png")
+      .flip()
+      .write("./images/image.png", function (err) {
+        if (!err){
+         console.log("changed to png");
         
-        //do stuff
-        var tube = pictureTube({cols: Math.floor(tty.WriteStream().columns*0.9)});
-        tube.pipe(process.stdout);
-
-        var fs = require('fs');
-        fs.createReadStream("./images/image.png").pipe(tube);
-    //   }else{
-    //     console.log("error",err);
-    //   }
-    // });
+          //do stuff
+          var tube = pictureTube({cols: Math.floor(tty.WriteStream().columns*0.9)});
+          tube.pipe(process.stdout);
+          var fs = require('fs');
+          fs.createReadStream("./images/image.png").pipe(tube);
+      }else{
+        console.log("error",err);
+      }
+    });
 
 });
 
