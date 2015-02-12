@@ -32,7 +32,7 @@ camera.on("read", function(err, timestamp, filename){
     //     console.log("changed to png");
         
         //do stuff
-        var tube = pictureTube({cols: tty.WriteStream().columns});
+        var tube = pictureTube({cols: tty.WriteStream().columns/2});
         tube.pipe(process.stdout);
 
         var fs = require('fs');
