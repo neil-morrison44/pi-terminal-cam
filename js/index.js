@@ -2,7 +2,12 @@ var RaspiCam = require("raspicam");
 var pictureTube = require("picture-tube");
 var gm = require("gm").subClass({ imageMagick: true });
 
-var camera = new RaspiCam({mode:"photo", output:"./"});
+var camera = new RaspiCam({
+  mode:"photo",
+  output:"./images/image.png",
+  encoding:"png",
+  timeout: 0
+});
 
 //to take a snapshot, start a timelapse or video recording
 
@@ -18,23 +23,23 @@ camera.on("start", function(){
 camera.on("read", function(err, timestamp, filename){
     camera.stop();
     console.log("read", arguments);
-    var pngFile = filename.replace("jpg","png");
-    gm(filename)
-    .noProfile()
-    .write(pngFile, function (err) {
-      if (!err){
-        console.log("changed to png");
+    // var pngFile = filename.replace("jpg","png");
+    // gm(filename)
+    // .noProfile()
+    // .write(pngFile, function (err) {
+    //   if (!err){
+    //     console.log("changed to png");
         
         //do stuff
         var tube = pictureTube();
         tube.pipe(process.stdout);
 
         var fs = require('fs');
-        fs.createReadStream(pngFile).pipe(tube);
-      }else{
-        console.log("error",err);
-      }
-    });
+        fs.createReadStream(filename).pipe(tube);
+    //   }else{
+    //     console.log("error",err);
+    //   }
+    // });
 
 });
 
