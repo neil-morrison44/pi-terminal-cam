@@ -2,7 +2,7 @@ var RaspiCam = require("raspicam");
 var pictureTube = require("picture-tube");
 var gm = require("gm").subClass({ imageMagick: true });
 
-var camera = new RaspiCam({mode:"photo", output:"./image.jpg"});
+var camera = new RaspiCam({mode:"photo", output:"./"});
 
 //to take a snapshot, start a timelapse or video recording
 
