@@ -1,7 +1,7 @@
 var RaspiCam = require("raspicam");
 var pictureTube = require("picture-tube");
 
-var camera = new RaspiCam({mode:"photo", output:"../images/image.png"});
+var camera = new RaspiCam({mode:"photo", output:"./image.png"});
 
 //to take a snapshot, start a timelapse or video recording
 
