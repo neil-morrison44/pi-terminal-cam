@@ -1,0 +1,29 @@
+{
+  "name": "pi-terminal-cam",
+  "version": "1.0.0",
+  "description": "A utility to output the Raspberry PI Camera's video feed to the terminal",
+  "main": "js/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://neil-morrison44@github.com/neil-morrison44/pi-terminal-cam.git"
+  },
+  "keywords": [
+    "pi",
+    "pi",
+    "camera",
+    "raspberry",
+    "pi"
+  ],
+  "author": "Neil Morrison",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/neil-morrison44/pi-terminal-cam/issues"
+  },
+  "homepage": "https://github.com/neil-morrison44/pi-terminal-cam",
+  "dependencies": {
+    "raspicam": "^0.2.13"
+  }
+}
