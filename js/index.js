@@ -16,13 +16,14 @@ camera.on("start", function(){
 
 //listen for the "read" event triggered when each new photo/video is saved
 camera.on("read", function(err, timestamp, filename){
+    camera.stop();
     var pngFile = filename.replace("jpg","png");
     gm(filename)
     .noProfile()
     .write(pngFile, function (err) {
       if (!err){
         console.log("read", arguments);
-        camera.stop( );
+        
         //do stuff
         var tube = pictureTube();
         tube.pipe(process.stdout);
