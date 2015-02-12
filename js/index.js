@@ -32,20 +32,13 @@ camera.on("read", function(err, timestamp, filename){
 //listen for the "stop" event triggered when the stop method was called
 camera.on("stop", function(){
   //do stuff
+
+  var tube = pictureTube({cols: Math.floor(tty.WriteStream().columns*0.95)});
+  tube.pipe(process.stdout);
+
   gm("./images/image.png")
     .flip()
-    .write("./images/image.png", function (err) {
-      if (!err){
-        console.log("changed to png");
-        //do stuff
-        var tube = pictureTube({cols: Math.floor(tty.WriteStream().columns*0.95)});
-        tube.pipe(process.stdout);
-        var fs = require('fs');
-        fs.createReadStream("./images/image.png").pipe(tube);
-    }else{
-      console.log("error",err);
-    }
-  });
+    .stream().pipe(tube);
 });
 
 //listen for the process to exit when the timeout has been reached
