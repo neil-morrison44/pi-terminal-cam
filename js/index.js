@@ -1,7 +1,7 @@
 var RaspiCam = require("raspicam");
 var pictureTube = require("picture-tube");
 
-var camera = new RaspiCam({mode:"photo", output:"image.png"});
+var camera = new RaspiCam({mode:"photo", output:"../images/image.png"});
 
 //to take a snapshot, start a timelapse or video recording
 camera.start( );
@@ -21,9 +21,7 @@ camera.on("read", function(err, timestamp, filename){
     tube.pipe(process.stdout);
 
     var fs = require('fs');
-    fs.createReadStream('image.png').pipe(tube);
-
-
+    fs.createReadStream('../images/image.png').pipe(tube);
 });
 
 //listen for the "stop" event triggered when the stop method was called
