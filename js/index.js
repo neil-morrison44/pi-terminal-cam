@@ -1,7 +1,8 @@
 var RaspiCam = require("raspicam");
 var pictureTube = require("picture-tube");
+var gm = require("gm");
 
-var camera = new RaspiCam({mode:"photo", output:"./image.png"});
+var camera = new RaspiCam({mode:"photo", output:"./image.jpg"});
 
 //to take a snapshot, start a timelapse or video recording
 
@@ -15,14 +16,21 @@ camera.on("start", function(){
 
 //listen for the "read" event triggered when each new photo/video is saved
 camera.on("read", function(err, timestamp, filename){
-    console.log("read", arguments);
-    camera.stop( );
-    //do stuff
-    var tube = pictureTube();
-    tube.pipe(process.stdout);
+    var pngFile = filename.replace("jpg","png");
+    gm(filename)
+    .noProfile()
+    .write(pngFile, function (err) {
+      if (!err){
+        console.log("read", arguments);
+        camera.stop( );
+        //do stuff
+        var tube = pictureTube();
+        tube.pipe(process.stdout);
 
-    var fs = require('fs');
-    fs.createReadStream(filename).pipe(tube);
+        var fs = require('fs');
+        fs.createReadStream(filename).pipe(tube);
+        }
+    });
 
 });
 
