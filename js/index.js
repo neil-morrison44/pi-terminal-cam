@@ -1,6 +1,7 @@
 var RaspiCam = require("raspicam");
 var pictureTube = require("picture-tube");
 var gm = require("gm").subClass({ imageMagick: true });
+var tty = require("tty");
 
 var camera = new RaspiCam({
   mode:"photo",
@@ -31,7 +32,7 @@ camera.on("read", function(err, timestamp, filename){
     //     console.log("changed to png");
         
         //do stuff
-        var tube = pictureTube();
+        var tube = pictureTube({cols: tty.WriteStream().columns});
         tube.pipe(process.stdout);
 
         var fs = require('fs');
