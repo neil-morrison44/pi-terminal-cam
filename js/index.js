@@ -30,7 +30,7 @@ camera.on("read", function(err, timestamp, filename){
         tube.pipe(process.stdout);
 
         var fs = require('fs');
-        fs.createReadStream("./"+filename).pipe(tube);
+        fs.createReadStream(pngFile).pipe(tube);
       }else{
         console.log("error",err);
       }
