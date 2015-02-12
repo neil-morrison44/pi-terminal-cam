@@ -38,6 +38,8 @@ camera.on("stop", function(){
 
   gm("./images/image.png")
     .flip()
+    .modulate(150,150)
+    .normalize()
     .stream().pipe(tube);
 });
 
