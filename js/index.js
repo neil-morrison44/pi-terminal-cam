@@ -22,8 +22,11 @@ camera.on("start", function(){
 
 //listen for the "read" event triggered when each new photo/video is saved
 camera.on("read", function(err, timestamp, filename){
-    console.log("read", arguments);
-    // camera.stop();
+
+    if (filename.indexOf("~") === -1){
+      console.log("read", arguments);
+      camera.stop();
+    }
 });
 
 //listen for the "stop" event triggered when the stop method was called
