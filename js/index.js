@@ -35,7 +35,7 @@ camera.on("read", function(err, timestamp, filename){
         tube.pipe(process.stdout);
 
         var fs = require('fs');
-        fs.createReadStream("./images/"+filename.replace("~","")).pipe(tube);
+        fs.createReadStream("./images/image.png").pipe(tube);
     //   }else{
     //     console.log("error",err);
     //   }
