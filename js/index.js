@@ -1,6 +1,6 @@
 var RaspiCam = require("raspicam");
 var pictureTube = require("picture-tube");
-var gm = require("gm");
+var gm = require("gm").subClass({ imageMagick: true });
 
 var camera = new RaspiCam({mode:"photo", output:"./image.jpg"});
 
