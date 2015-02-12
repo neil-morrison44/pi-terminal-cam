@@ -23,7 +23,7 @@ camera.on("read", function(err, timestamp, filename){
     .noProfile()
     .write(pngFile, function (err) {
       if (!err){
-        
+        console.log("changed to png");
         
         //do stuff
         var tube = pictureTube();
@@ -31,7 +31,9 @@ camera.on("read", function(err, timestamp, filename){
 
         var fs = require('fs');
         fs.createReadStream(filename).pipe(tube);
-        }
+      }else{
+        console.log("error",err);
+      }
     });
 
 });
