@@ -24,6 +24,8 @@
   },
   "homepage": "https://github.com/neil-morrison44/pi-terminal-cam",
   "dependencies": {
+    "gm": "^1.17.0",
+    "picture-tube": "0.0.4",
     "raspicam": "^0.2.13"
   }
 }
