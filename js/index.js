@@ -38,6 +38,7 @@ camera.on("stop", function(){
 
   gm("./images/image.png")
     .flip()
+    .flop()
     .modulate(150,150)
     .normalize()
     .stream().pipe(tube);
